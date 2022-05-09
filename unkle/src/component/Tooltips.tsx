@@ -84,11 +84,15 @@ export const Tooltips: React.FC<TooltipsProps> = (props: TooltipsProps) => {
     }, [inputRef])
 
     return (
-        <div >
+        <div>
             <div ref={inputRef} className="w-auto relative">
                 {children}
                 <div
-                    className={`absolute drop-shadow ${!withoutAnimation ? "animate-wiggle" : null}  ${hidden ? "hidden" : null} ${className} w-full ${position} ${maxWidth ? "maxWidth:" + maxWidth : null} ${minWidth ? "minWidth:" + minWidth : null}`}>
+                    style={{
+                        maxWidth: maxWidth ? `${maxWidth}px` : undefined,
+                        minWidth: maxWidth ? `${minWidth}px` : undefined
+                    }}
+                    className={`absolute drop-shadow ${!withoutAnimation ? "animate-wiggle" : null}  ${hidden ? "hidden" : null} ${className} w-full ${position} `}>
                     {content}
                 </div>
             </div>
